@@ -1,14 +1,18 @@
 import datetime
+from django.conf import settings
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
+
+
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import BadHeaderError,send_mail
+from django.template.loader import render_to_string,get_template
 
 from .utils import date_duration
 from .token import activation_token
 
-from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import BadHeaderError,send_mail
-from django.template.loader import render_to_string
 from django.db import models
+
 
 
 
@@ -81,9 +85,14 @@ class Activation(models.Model):
 		'''
 		domain  = get_current_site(request).domain
 		link_url = 'http://{0}/token-validation/auth/{1}/'.format(domain,self.token)
+
+		subject = 'Confirm Subscription'
 		message = "{1} to confirm subscription".format(domain,link_url)
+		from_email = settings.DEFAULT_FROM_EMAIL
+		to_email = self.newsletter.email
+
 		try:
-			send_mail('Confirm Subscription', message, 'noreply@kraft99.co', [self.newsletter.email])
+			send_mail(subject,message,from_email,[to_email],fail_silently=True)
 		except BadHeaderError:
 			pass
 		
@@ -92,6 +101,7 @@ class Activation(models.Model):
 
 	@classmethod
 	def create_activation(cls,instance):
+		# create and returns activation object.
 		return cls.objects.create(token = activation_token(),
 							newsletter = instance,
 							expired=date_duration(),

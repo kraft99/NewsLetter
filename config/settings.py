@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from .key import get_key
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -142,11 +142,32 @@ TEMPLATE_LOADERS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
 # Email Config.
-EMAIL_USE_TLS = True
 EMAIL_HOST = '' # Eg. smtp.gmail.com
 EMAIL_HOST_USER = '' # Eg. kraft.developer@gmail.com
 EMAIL_HOST_PASSWORD = '' # password for kraft.developer@gmail.com
 EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'kraft.developer@gmail.com' # Eg. kraft.developer@gmail.com (ie.email from.)
+
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Email Subject'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # dev. only
+
+
+# SenGrid Settings
+# EMAIL_HOST = 'smtp.sendgrid.net' # Eg. smtp.gmail.com
+# EMAIL_HOST_USER = 'kraft.developer@gmail.com' # Eg. kraft.developer@gmail.com
+# EMAIL_HOST_PASSWORD = 'yencommerce2019' # password for kraft.developer@gmail.com
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'kraft.developer@gmail.com' # Eg. kraft.developer@gmail.com (ie.email from.)
+
+# ACCOUNT_EMAIL_SUBJECT_PREFIX = 'NewLetter Subscription Confirmation.'
+
+# SENDGRID_API_KEY = get_key()
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = "sendgrid_backend.SendgridBackend" # production only
