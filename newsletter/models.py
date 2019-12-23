@@ -98,7 +98,6 @@ class Activation(models.Model):
 		
 
 
-
 	@classmethod
 	def create_activation(cls,instance):
 		# create and returns activation object.
@@ -113,5 +112,4 @@ class Activation(models.Model):
 		return timezone.now() > self.expired
 
 	has_expired = property(has_expired)
-
 
