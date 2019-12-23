@@ -1,0 +1,20 @@
+{% extends 'newsletter/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<section class="row">
+		<section class="col-lg-8 offset-lg-2 p-col">
+			<section class="wrapper shadow-sm">
+				<h2 class="text-center">Subscribe for NewsLetter</h2>
+				<h6 class="text-center">Only one email per week. I promise <span style="font-size: 16px;">🙂</span></h6>
+				<form action='{% url "newsletter:subscribe" %}' method="POST">
+					{% csrf_token %}
+					{{form|crispy}}
+					<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+				</form>	
+			</section>
+		</section>
+	</section>
+
+{% endblock %}

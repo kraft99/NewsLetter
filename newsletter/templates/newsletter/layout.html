@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NewsLetter Subscription</title>
+    <!-- Bootstrap Version 4.1.x -->
+    <link rel="stylesheet" href="{% static 'css/vendors/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendors/line-awesome/line-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<style type="text/css">
+body{
+  background-image: url({% static 'img/bck-pattern.png' %}) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  height: 100vh !important;
+}	
+
+</style>
+
+<!-- content section -->
+<section class="container">
+{% block content %}
+	
+{% endblock %}
+</section>
+<!-- /content section -->
+
+<script type="text/javascript" src="{% static 'js/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vendors/bootstrap/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
