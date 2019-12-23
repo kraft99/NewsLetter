@@ -159,7 +159,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # dev. only
 # SenGrid Settings
 # EMAIL_HOST = 'smtp.sendgrid.net' # Eg. smtp.gmail.com
 # EMAIL_HOST_USER = 'kraft.developer@gmail.com' # Eg. kraft.developer@gmail.com
-# EMAIL_HOST_PASSWORD = 'yencommerce2019' # password for kraft.developer@gmail.com
+# EMAIL_HOST_PASSWORD = '******************' # password for kraft.developer@gmail.com
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = 'kraft.developer@gmail.com' # Eg. kraft.developer@gmail.com (ie.email from.)
